@@ -39,5 +39,5 @@ def recommend_price(day_of_week, month, year, inventory, terms_of_trade, margins
     return predicted_price[0]
 
 # Example usage
-recommended_price = recommend_price(1,8,2023,-50,0.2,0.15)
+recommended_price = recommend_price(0,4,2025,199,0.12,0.25)
 print(f'Recommended Price: ${recommended_price}')
