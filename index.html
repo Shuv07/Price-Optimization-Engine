@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Optimization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Input Data</h1>
+            <div class="input-box">
+                <input type="number" placeholder="Day Of Week(0'monday' - 6'saturday')" required="">
+            </div>
+            <div class="input-box"><input type="number" placeholder="Month(0-12)" required="">
+            </div>
+            <div class="input-box"><input type="number" placeholder="Year(2022-2025)" required="">
+            </div>
+            <div class="input-box"><input type="text" placeholder="Inventory" required="">
+            </div>
+            <div class="input-box"><input type="text" placeholder="Terms of Trade" required="">
+            </div>
+            <div class="input-box"><input type="text" placeholder="Margins" required="">
+            </div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+    </div>
+    <script>
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the predicted price in the HTML
+                const priceElement = document.querySelector('.predicted-price');
+                priceElement.textContent = '$' + data.predicted_price;
+            });
+        });
+    </script>
+</body>
+</html>
